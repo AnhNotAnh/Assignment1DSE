@@ -1,6 +1,16 @@
-package students.items;
+package src.students.items;
 
-public class Food {
+public class Food extends Item {
+
+	
+	public Food() 
+	{
+		
+	}
+	
 
 
 }
+	
+
+

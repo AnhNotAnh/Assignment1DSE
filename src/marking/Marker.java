@@ -1,8 +1,8 @@
-package marking;
+package src.marking;
 
-import students.Farm;
-import students.Field;
-import students.items.*;
+import src.students.Farm;
+import src.students.Field;
+import src.students.items.*;
 
 public class Marker {
 
