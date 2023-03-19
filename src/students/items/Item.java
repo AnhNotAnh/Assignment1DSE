@@ -1,11 +1,11 @@
 package src.students.items;
 
-public class Item {
+public abstract class Item {
 	
-	private int age;
-	private int maturationAge;
-	private int deathAge;
-	private int monetaryValue;
+	protected static int age;
+	protected static int maturationAge;
+	protected static int deathAge;
+	protected static int monetaryValue;
 	
 	
 	
@@ -40,26 +40,26 @@ public class Item {
 		}
 	}
 	
-	
+	/*Uncompleted function*/
 	public int getValue() 
-	{
-		return monetaryValue;
+	{ 
+		if(Food.age > Food.maturationAge)
+			return Food.monetaryValue;
+		else
+			return monetaryValue;
 	}
 	
 	/*Uncompleted function*/
-	public boolean equals()
+	public boolean equals(Object obj)
 	{
-		return true;
+		if(obj.equals(this))
+			return true;
+		else 
+			return false;
 	}
 	
 	/*Uncompleted function*/
 	@Override
-	public String toString()
-	{
-		return "";
-		
-	}
-	
-	
-	
+	public abstract String toString(); 
+
 }
