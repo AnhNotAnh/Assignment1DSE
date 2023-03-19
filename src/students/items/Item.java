@@ -2,22 +2,25 @@ package src.students.items;
 
 public class Item {
 	
-	public int age = 0;
-	public int maturationAge;
-	public int deathAge;
-	public int monetaryValue;
+	private int age;
+	private int maturationAge;
+	private int deathAge;
+	private int monetaryValue;
 	
-	/*public Item (int maturation_age,int death_age,int monetary_value)*/
+	
 	
 	public Item(int maturation_age,int death_age,int monetary_value)
 	{
-		this.maturationAge = maturation_age;
+		this.age = 0;
+		maturationAge = maturation_age;
+		deathAge = death_age;
+		monetaryValue = monetary_value;
 	}
 	
 	
 	public void tick() 
 	{
-		 this.age ++;
+		 age ++;
 	}
 	
 	
