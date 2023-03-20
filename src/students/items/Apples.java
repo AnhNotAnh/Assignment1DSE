@@ -1,8 +1,8 @@
 package src.students.items;
 
-public abstract class  Apples extends Food {
+public class  Apples extends Food {
 
-	public Apples(int maturationAge, int deathAge, int monetaryValue) 
+	public Apples() 
 	{
 		super(maturationAge, deathAge, monetaryValue);
 		maturationAge = 2;

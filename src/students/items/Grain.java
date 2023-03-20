@@ -1,9 +1,9 @@
 package src.students.items;
 
-public abstract class Grain extends Food{
+public class Grain extends Food{
 	
 
-	public Grain(int maturationAge, int deathAge, int monetaryValue)
+	public Grain()
 	{
 		super(maturationAge, deathAge, monetaryValue);
 		maturationAge = 2;
