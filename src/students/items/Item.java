@@ -2,7 +2,7 @@ package src.students.items;
 
 public abstract class Item {
 	
-	protected static int age;
+	protected static int age = 0;
 	protected static int maturationAge;
 	protected static int deathAge;
 	protected static int monetaryValue;
@@ -11,7 +11,6 @@ public abstract class Item {
 	
 	public Item(int maturation_age,int death_age,int monetary_value)
 	{
-		this.age = 0;
 		maturationAge = maturation_age;
 		deathAge = death_age;
 		monetaryValue = monetary_value;
@@ -26,7 +25,7 @@ public abstract class Item {
 	
 	public void setAge(int age) 
 	{
-		this.age = age;
+		Item.age = age;
 	}
 	
 	
@@ -49,7 +48,7 @@ public abstract class Item {
 			return monetaryValue;
 	}
 	
-	/*Uncompleted function*/
+	/*Uncompleted function, review lecture 2, page 210 */
 	public boolean equals(Object obj)
 	{
 		if(obj.equals(this))
@@ -58,7 +57,6 @@ public abstract class Item {
 			return false;
 	}
 	
-	/*Uncompleted function*/
 	@Override
 	public abstract String toString(); 
 
