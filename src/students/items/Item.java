@@ -2,10 +2,10 @@ package src.students.items;
 
 public abstract class Item {
 	
-	protected static int age = 0;
-	protected static int maturationAge;
-	protected static int deathAge;
-	protected static int monetaryValue;
+	protected int age = 0;
+	protected int maturationAge;
+	protected int deathAge;
+	protected int monetaryValue;
 	
 	
 	
@@ -25,7 +25,7 @@ public abstract class Item {
 	
 	public void setAge(int age) 
 	{
-		Item.age = age;
+		this.age = age;
 	}
 	
 	
@@ -42,18 +42,20 @@ public abstract class Item {
 	/*Uncompleted function*/
 	public int getValue() 
 	{ 
-		if(Food.age > Food.maturationAge)
-			return Food.monetaryValue;
-		else
+		// do we need to check whether it is food items??
+		if(age > maturationAge)
 			return monetaryValue;
+		else
+			return 0; 
 	}
 	
 	/*Uncompleted function, review lecture 2, page 210 */
+	@Override
 	public boolean equals(Object obj)
 	{
-		if(obj.equals(this))
+		if(obj == this)
 			return true;
-		else 
+		else
 			return false;
 	}
 	

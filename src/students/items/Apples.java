@@ -6,7 +6,8 @@ public class Apples extends Food {
 	{
 		super(2,6,2);
 	}
-	/*Lecture explanation*/
+	
+	/*Lecture 3? explanation*/
 	public static int getGenerationCount()
 	{
 		return 0;
@@ -14,7 +15,7 @@ public class Apples extends Food {
 	
 	public String toString()
 	{
-		if(Apples.age < maturationAge )
+		if(age < maturationAge )
 			return "a";
 		else
 			return "A";

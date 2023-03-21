@@ -4,10 +4,7 @@ public class UntilledSoil extends Item {
 
 	public UntilledSoil() 
 	{
-		super(maturationAge, deathAge, monetaryValue);
-		maturationAge = Integer.MAX_VALUE;
-		deathAge = Integer.MAX_VALUE;
-		monetaryValue = -1;
+		super(Integer.MAX_VALUE, Integer.MAX_VALUE, -1);
 	}
 	
 	public String toString()

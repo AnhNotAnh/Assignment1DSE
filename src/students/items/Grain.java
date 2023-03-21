@@ -7,7 +7,7 @@ public class Grain extends Food{
 		super(2,6,2);
 	}
 	
-	/*Lecture explanation*/
+	/*Lecture 3? explanation*/
 	public static int getGenerationCount()
 	{
 		return 0;
@@ -15,7 +15,7 @@ public class Grain extends Food{
 	
 	public String toString()
 	{
-		if(Grain.age < maturationAge )
+		if(age < maturationAge )
 			return "g";
 		else
 			return "G";
