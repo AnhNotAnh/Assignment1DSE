@@ -2,7 +2,7 @@ package src.students.items;
 
 public abstract class Item {
 	
-	protected int age = 0;
+	protected int age;
 	protected int maturationAge;
 	protected int deathAge;
 	protected int monetaryValue;
@@ -11,6 +11,7 @@ public abstract class Item {
 	
 	public Item(int maturation_age,int death_age,int monetary_value)
 	{
+		this.age =0;
 		maturationAge = maturation_age;
 		deathAge = death_age;
 		monetaryValue = monetary_value;
@@ -51,12 +52,23 @@ public abstract class Item {
 	
 	/*Uncompleted function, review lecture 2, page 210 */
 	@Override
-	public boolean equals(Object obj)
+	public boolean equals(Object otherObject)
 	{
-		if(obj == this)
+		if(otherObject == this)
 			return true;
 		else
-			return false;
+			if(!(otherObject instanceof Item))
+			{
+				return false;
+			}
+			else
+			{
+				Item itemObject = (Item)otherObject; 
+				return itemObject.age == this.age &&
+					   itemObject.deathAge ==this.deathAge &&
+					   itemObject.maturationAge ==this.maturationAge &&
+					   itemObject.monetaryValue ==this.monetaryValue;
+			}
 	}
 	
 	@Override
