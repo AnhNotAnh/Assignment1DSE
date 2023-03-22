@@ -43,11 +43,7 @@ public abstract class Item {
 	/*Uncompleted function*/
 	public int getValue() 
 	{ 
-		// do we need to check whether it is food items??
-		if(age > maturationAge)
-			return monetaryValue;
-		else
-			return 0; 
+		return monetaryValue;
 	}
 	
 	/*Uncompleted function, review lecture 2, page 210 */
