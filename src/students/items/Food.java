@@ -1,4 +1,4 @@
-package src.students.items;
+package students.items;
 
 public abstract class Food extends Item {
 
@@ -8,6 +8,14 @@ public abstract class Food extends Item {
 	
 	}
 	
+	@Override
+	public int getValue() 
+	{ 
+		if(age > maturationAge)
+			return monetaryValue;
+		else
+			return 0;
+	}
 	
 
 

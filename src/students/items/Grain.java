@@ -1,4 +1,4 @@
-package src.students.items;
+package students.items;
 
 public class Grain extends Food{
 
@@ -14,16 +14,6 @@ public class Grain extends Food{
 	public static int getGenerationCount()
 	{
 		return counter;
-	}
-	
-	//Should have actual value > variables ?
-	@Override
-	public int getValue() 
-	{ 
-		if(age > maturationAge)
-			return monetaryValue;
-		else
-			return 0;
 	}
 	
 	public String toString()

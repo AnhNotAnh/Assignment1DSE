@@ -1,4 +1,4 @@
-package src.students;
+package students;
 
 public class Farm {
 	

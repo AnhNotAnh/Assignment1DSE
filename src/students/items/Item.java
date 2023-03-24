@@ -1,4 +1,4 @@
-package src.students.items;
+package students.items;
 
 public abstract class Item {
 	
@@ -20,7 +20,7 @@ public abstract class Item {
 	
 	public void tick() 
 	{
-		 age ++;
+		 this.age ++;
 	}
 	
 	
@@ -32,12 +32,11 @@ public abstract class Item {
 	
 	public boolean died () 
 	{
-		if (age > deathAge) {
+		if (this.age > this.deathAge) {
 			return true;
 		}
-		else {
-			return false;
-		}
+		return false;
+		
 	}
 	
 	/*Uncompleted function*/
