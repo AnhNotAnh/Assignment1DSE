@@ -39,7 +39,7 @@ public abstract class Item {
 		
 	}
 	
-	/*Uncompleted function*/
+	// getValue for Food item will be in Food class
 	public int getValue() 
 	{ 
 		return monetaryValue;
@@ -49,9 +49,11 @@ public abstract class Item {
 	@Override
 	public boolean equals(Object otherObject)
 	{
+		//check if otherObject and item are same memory location
 		if(otherObject == this)
 			return true;
-		else
+		else /* check if not an instance of Item then return false 
+			otherwise casting it to Item and check condition*/
 			if(!(otherObject instanceof Item))
 			{
 				return false;
