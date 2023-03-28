@@ -35,6 +35,10 @@ public class Marker {
 		
 		
 		Field testField = new Field(5, 5);
+		System.out.println(testField.getSummary()); //I wrote this to test getSummary *******************************
+		testField.plant(0, 0, a); //I wrote this to test getSummary *******************************
+		System.out.println(testField.getSummary()); //I wrote this to test getSummary *******************************
+		
 		
 		System.out.println(testField.get(3, 3)); //should print "."
 		System.out.println(testField); //should print the field

@@ -116,13 +116,13 @@ public class Field {
 				
 			}
 		}
-		return "Apples:      " + numOfApple +"/n" +
-				"Grain:      " + numOfGrain +"/n" +
-				"Soil:      " + numOfSoil + "/n" +
-				"Untilled:      " + numOfUntilledSoil + "/n" +
-				"Weed:      " + numOfWeed + "/n" +
-				"For a total of "+ getValue() + "/n" +
-				"Total apples created: "+ numOfApple + "/n" +
+		return "Apples:        " + numOfApple +"\n" +
+				"Grain:         " + numOfGrain +"\n" +
+				"Soil:          " + numOfSoil + "\n" +
+				"Untilled:      " + numOfUntilledSoil + "\n" +
+				"Weed:          " + numOfWeed + "\n" +
+				"For a total of $"+ getValue() + "\n" +
+				"Total apples created: "+ numOfApple + "\n" +
 				"Total grain created: "+ numOfGrain;
 	}
 	
