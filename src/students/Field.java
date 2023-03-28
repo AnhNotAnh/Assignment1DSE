@@ -18,7 +18,7 @@ public class Field {
 		{
 			for (int witdthcount = 0; witdthcount < width; witdthcount++)
 			{
-				field [heightcount][witdthcount]= new Soil();
+				field[heightcount][witdthcount]= new Soil();
 			}
 		}
 	}
@@ -30,54 +30,43 @@ public class Field {
 		{
 			for (int witdthcount = 0; witdthcount < width; witdthcount++)
 			{
-				Item itemChild = field [heightcount][witdthcount];
+				Item itemChild = field[heightcount][witdthcount];
+				itemChild.tick();
 				if (itemChild instanceof Soil)
-				{
-					Random dice = new Random();
-					int percentage = dice.nextInt(101);
-					if (percentage <= 20)
 					{
-						field [heightcount][witdthcount] = new Weed();
+						Random dice = new Random();
+						int percentage = dice.nextInt(101);
+						if (percentage <= 20)
+							{
+								field[heightcount][witdthcount] = new Weed();
+							}
 					}
-					else
-						itemChild.tick();
-				}
-				else
-				{
-					if (itemChild.died() == true)
+				if (itemChild.died() == true)
 					{
-						field [heightcount][witdthcount] = new UntilledSoil();
+						field[heightcount][witdthcount] = new UntilledSoil();
 					}
-					else
-					{
-						itemChild.tick();
-					}
+				
 				}
 			}
-		}
 	}
 		
-	
-	
 	public void till(int i, int j) 
 	{	
 		field[i][j]= new Soil();
 	}
 	
 	
-	// using clone or copy?
-	public String get(int i, int j)
+	// using clone or copy? (uncompleted)
+	public Item get(int i, int j)
 	{
-		return null;
+		return field[i][j];
 	}
 	
-
 	public void plant(int i, int j, Item food) 
 	{
 		field[i][j]= food;
 	}
 
-	
 	public int getValue()
 	{
 		int totalValue = 0;
@@ -85,23 +74,63 @@ public class Field {
 		{
 			for (int witdthcount = 0; witdthcount < width; witdthcount++)
 			{
-				totalValue += field [heightcount][witdthcount].getValue();
+				totalValue += field[heightcount][witdthcount].getValue();
 			}
 		}
 		return totalValue;
 	}
 	
-	// Will this using getGenCount?
+	// Will this using getGenCount? use instance of, using switch, case?
+	// Do we need to check if that's food ?
 	public String getSummary()
-	{
-		return null;
+	{	
+		int numOfApple = 0;
+		int numOfGrain = 0;
+		int numOfSoil = 0;
+		int numOfUntilledSoil = 0;
+		int numOfWeed = 0;
+		for (int heightcount = 0; heightcount < height; heightcount++)
+		{
+			for (int witdthcount = 0; witdthcount < width; witdthcount++)
+			{
+				if(field[heightcount][witdthcount] instanceof Apples)
+				{
+					numOfApple +=1;
+				}
+				else if(field[heightcount][witdthcount] instanceof Grain)
+				{
+					numOfGrain +=1;
+				}
+				else if(field[heightcount][witdthcount] instanceof Soil)
+				{
+					numOfSoil +=1;
+				}
+				else if(field[heightcount][witdthcount] instanceof UntilledSoil)
+				{
+					numOfUntilledSoil +=1;
+				}
+				else if(field[heightcount][witdthcount] instanceof Weed)
+				{
+					numOfWeed +=1;
+				}
+				
+			}
+		}
+		return "Apples:      " + numOfApple +"/n" +
+				"Grain:      " + numOfGrain +"/n" +
+				"Soil:      " + numOfSoil + "/n" +
+				"Untilled:      " + numOfUntilledSoil + "/n" +
+				"Weed:      " + numOfWeed + "/n" +
+				"For a total of "+ getValue() + "/n" +
+				"Total apples created: "+ numOfApple + "/n" +
+				"Total grain created: "+ numOfGrain;
 	}
 	
 	//How to create numbered grid?
 	@Override
 	public String toString()
 	{
-		return null;
+		return "this is a field";
 	}
 	
 	
