@@ -46,7 +46,7 @@ public class Field {
 				{
 					if (itemChild.died() == true)
 					{
-						field [heightcount][witdthcount] = new Weed();
+						field [heightcount][witdthcount] = new UntilledSoil();
 					}
 					else
 					{
