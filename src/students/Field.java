@@ -30,9 +30,8 @@ public class Field {
 		{
 			for (int witdthcount = 0; witdthcount < width; witdthcount++)
 			{
-				Item itemChild = field[heightcount][witdthcount];
-				itemChild.tick();
-				if (itemChild instanceof Soil)
+				field[heightcount][witdthcount].tick();
+				if (field[heightcount][witdthcount] instanceof Soil)
 					{
 						Random dice = new Random();
 						int percentage = dice.nextInt(101);
@@ -41,7 +40,7 @@ public class Field {
 								field[heightcount][witdthcount] = new Weed();
 							}
 					}
-				if (itemChild.died() == true)
+				if (field[heightcount][witdthcount].died() == true)
 					{
 						field[heightcount][witdthcount] = new UntilledSoil();
 					}
@@ -122,8 +121,8 @@ public class Field {
 				"Untilled:      " + numOfUntilledSoil + "\n" +
 				"Weed:          " + numOfWeed + "\n" +
 				"For a total of $"+ getValue() + "\n" +
-				"Total apples created: "+ numOfApple + "\n" +
-				"Total grain created: "+ numOfGrain;
+				"Total apples created: "+ Apples.getGenerationCount() + "\n" +
+				"Total grain created: "+ Grain.getGenerationCount();
 	}
 	
 	//How to create numbered grid?
