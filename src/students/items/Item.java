@@ -49,23 +49,20 @@ public abstract class Item {
 	@Override
 	public boolean equals(Object otherObject)
 	{
-		//check if otherObject and item are same memory location
-		if(otherObject == this)
+		
+		if(otherObject == this)//check if otherObject and item are same memory location
 			return true;
-		else /* check if not an instance of Item then return false 
-			otherwise casting it to Item and check condition*/
-			if(!(otherObject instanceof Item))
-			{
-				return false;
-			}
-			else
+		else // check if it is an instance of Item then assigning new variable, casting it to Item and check condition otherwise false
+			if(otherObject instanceof Item)
 			{
 				Item itemObject = (Item)otherObject; 
 				return itemObject.age == this.age &&
-					   itemObject.deathAge ==this.deathAge &&
-					   itemObject.maturationAge ==this.maturationAge &&
-					   itemObject.monetaryValue ==this.monetaryValue;
+						itemObject.deathAge ==this.deathAge &&
+						itemObject.maturationAge ==this.maturationAge &&
+						itemObject.monetaryValue ==this.monetaryValue;
 			}
+			else // if it's not instance of Item
+				return false;
 	}
 	
 	@Override
