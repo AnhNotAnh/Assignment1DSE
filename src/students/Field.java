@@ -128,8 +128,19 @@ public class Field {
 	//How to create numbered grid?
 	@Override
 	public String toString()
-	{
-		return "this is a field";
+	{	
+		String printable = "";
+		for (int heightcount = 0; heightcount <= height; heightcount++)
+		{
+			for (int witdthcount = 0 ; witdthcount <= width; witdthcount++) 
+			{
+			   // print numbered column
+			   // print numbered row
+			   //print item in the field
+				printable +=" " + field[heightcount][witdthcount].toString();
+		    }
+		}
+	return printable;
 	}
 	
 	
