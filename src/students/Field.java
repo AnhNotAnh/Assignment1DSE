@@ -134,15 +134,26 @@ public class Field {
 		{
 			for (int witdthcount = 0 ; witdthcount <= width; witdthcount++) 
 			{
-			   // print numbered column
-			   // print numbered row
-			   //print item in the field
-				printable +=" " + field[heightcount][witdthcount].toString();
+				if (heightcount == 0 && witdthcount == 0) 
+		        {
+		        	printable+="   ";
+		        } 
+				// print numbered column
+				else if (heightcount == 0)
+		        {
+					printable+=" "+ witdthcount;
+		        } 
+				// print numbered row
+				else if (witdthcount == 0)
+		        {
+		        	printable+=" "+ heightcount;
+		        }
+				//print item in the field
+				else 
+				printable +=" " + field[heightcount - 1][witdthcount - 1].toString();
 		    }
+			printable+= "\n";
 		}
 	return printable;
 	}
-	
-	
-	
 }
