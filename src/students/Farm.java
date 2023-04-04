@@ -1,5 +1,6 @@
 package students;
 import java.util.Scanner;
+import students.items.*;
 
 public class Farm {
 	
@@ -55,6 +56,28 @@ public class Farm {
 			{
 				int height = Integer.parseInt(userInput.substring(2, 3));
 				int weight = Integer.parseInt(userInput.substring(4));
+				System.out.println("Enter:"+"\n"+
+									"- 'a' to buy an apple for $2" + "\n"+
+									"- 'g' to buy an grain for $1"+ "\n");
+				String plantTree = keyboard.nextLine();
+				if(plantTree.substring(0).equals("a"))
+				{
+					Apples apple = new Apples();
+					field.plant(height, weight, apple);
+					startingFunds -= field.field[height][weight].getCost();// need to be fixed
+				}
+				else if(plantTree.substring(0).equals("g"))
+				{
+					Grain grain = new Grain();
+					field.plant(height, weight, grain);
+					startingFunds -= field.field[height][weight].getCost(); // need to be fixed
+				}
+				else
+				{
+					System.out.println("Invalid input");
+				}
+				
+				
 				field.till(height, weight);
 			}
 			else if(userInput.substring(0,1).equals("s"))
