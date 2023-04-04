@@ -49,21 +49,27 @@ public class Field {
 			}
 	}
 		
-	public void till(int i, int j) 
+	public void till(int x, int y) 
 	{	
-		field[i][j]= new Soil();
+		field[x][y]= new Soil();
 	}
 	
 	
 	// using clone or copy? (uncompleted)
-	public Item get(int i, int j)
+	public Item get(int x, int y)
 	{
-		return field[i][j];
+		return field[x][y];
 	}
 	
-	public void plant(int i, int j, Item food) 
+	public void plant(int x, int y, Item food) 
 	{
-		field[i][j]= food;
+		field[x][y]= food;
+	}
+	
+	public void harvest(int x, int y) 
+	{
+		int foodValue = field[x][y].getValue();
+		field[x][y] = new Soil();
 	}
 
 	public int getValue()
@@ -136,7 +142,7 @@ public class Field {
 			{
 				if (heightcount == 0 && witdthcount == 0) 
 		        {
-		        	printable+="   ";
+		        	printable+="  ";
 		        } 
 				// print numbered column
 				else if (heightcount == 0)
