@@ -3,7 +3,7 @@ package students.items;
 public class Grain extends Food{
 
 	private static int counter =0;
-	protected final int cost = 1;
+	protected final static int cost = 1;
 
 	public Grain()
 	{
@@ -25,8 +25,8 @@ public class Grain extends Food{
 			return "G";
 	}
 	
-	public int getCost()
+	public static int getCost()
 	{
-		return this.cost;
+		return cost;
 	}
 }

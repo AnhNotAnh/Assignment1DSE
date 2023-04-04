@@ -3,7 +3,7 @@ package students.items;
 public class Apples extends Food {
 	
 	private static int counter =0;
-	protected final int cost = 2;
+	protected final static int cost = 2;
 	
 	public Apples() 
 	{
@@ -25,9 +25,9 @@ public class Apples extends Food {
 			return "A";
 	}
 	
-	public int getCost()
+	public static int getCost()
 	{
-		return this.cost;
+		return cost;
 	}
 
 }

@@ -39,7 +39,7 @@ public class Farm {
 				quit = false;
 				System.out.println(quit);
 			}
-			else if(userInput.substring(0,1).equals("t"))
+			else if(userInput.substring(0,1).equals("t")) // till not working
 			{
 				int height = Integer.parseInt(userInput.substring(2,3));
 				int weight = Integer.parseInt(userInput.substring(4));
@@ -52,33 +52,35 @@ public class Farm {
 				int weight = Integer.parseInt(userInput.substring(4));
 				field.harvest(height, weight);
 			}
-			else if(userInput.substring(0,1).equals("p")) // uncompleted
+			else if(userInput.substring(0,1).equals("p")) // uncompleted, plant 3 4 but at 4 5 ??
 			{
 				int height = Integer.parseInt(userInput.substring(2, 3));
 				int weight = Integer.parseInt(userInput.substring(4));
-				System.out.println("Enter:"+"\n"+
-									"- 'a' to buy an apple for $2" + "\n"+
-									"- 'g' to buy an grain for $1"+ "\n");
-				String plantTree = keyboard.nextLine();
-				if(plantTree.substring(0).equals("a"))
+				if(field.field[height][weight] instanceof Food)
 				{
-					Apples apple = new Apples();
-					field.plant(height, weight, apple);
-					startingFunds -= field.field[height][weight].getCost();// need to be fixed
+					System.out.println("Food has been planted");
 				}
-				else if(plantTree.substring(0).equals("g"))
+				else 
 				{
-					Grain grain = new Grain();
-					field.plant(height, weight, grain);
-					startingFunds -= field.field[height][weight].getCost(); // need to be fixed
+					System.out.println("Enter:"+"\n"+
+										"- 'a' to buy an apple for $2" + "\n"+
+										"- 'g' to buy an grain for $1"+ "\n");
+					String plantTree = keyboard.nextLine();
+					if(plantTree.substring(0).equals("a"))
+					{
+						field.plant(height, weight,new Apples());
+						startingFunds -= Apples.getCost();
+					}
+					else if(plantTree.substring(0).equals("g"))
+					{
+						field.plant(height, weight, new Grain());
+						startingFunds -= Grain.getCost();
+					}
+					else
+					{
+						System.out.println("Invalid input");
+					}
 				}
-				else
-				{
-					System.out.println("Invalid input");
-				}
-				
-				
-				field.till(height, weight);
 			}
 			else if(userInput.substring(0,1).equals("s"))
 			{
