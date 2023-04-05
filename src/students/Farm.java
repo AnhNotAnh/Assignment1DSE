@@ -7,14 +7,14 @@ public class Farm {
 	protected int fieldWidth;
 	protected int fieldHeight;
 	protected int startingFunds;
-	protected Field field;
+	protected Field fieldObj;
 	
 	public Farm(int fieldWidth, int fieldHeight, int startingFunds)
 	{
 		this.fieldWidth = fieldWidth;
 		this.fieldHeight = fieldHeight;
 		this.startingFunds = startingFunds;
-		this.field = new Field(fieldHeight, fieldWidth);
+		this.fieldObj = new Field(fieldHeight, fieldWidth);
 	}
 	
 	public void run()
@@ -22,7 +22,7 @@ public class Farm {
 		boolean quit = true;
 		while(quit) 
 		{
-			System.out.println(field);
+			System.out.println(fieldObj);
 			System.out.printf("Bank balance: "+ "%2d ", startingFunds);
 			System.out.println();
 			System.out.println("Enter your next action:"+"\n"+
@@ -42,15 +42,15 @@ public class Farm {
 			{
 				int width = Integer.parseInt(userInput.substring(2,3));
 				int height = Integer.parseInt(userInput.substring(4));
-				field.till(height -1, width -1); //(x, y)
+				fieldObj.till(height -1, width -1); //(x, y)
 				System.out.println(height +" "+ width);
 			}
 			else if(userInput.substring(0,1).equals("h"))
 			{
 				int width = Integer.parseInt(userInput.substring(2,3));
 				int height = Integer.parseInt(userInput.substring(4));
-				String foodName = field.field[height-1][width-1].toString();
-				int value = field.harvest(height -1, width -1);
+				String foodName = fieldObj.field[height-1][width-1].toString();
+				int value = fieldObj.harvest(height -1, width -1);
 				startingFunds += value;
 				System.out.println("Sold "+ foodName + " for "
 									+ value+"\n");
@@ -59,7 +59,7 @@ public class Farm {
 			{
 				int width = Integer.parseInt(userInput.substring(2,3));
 				int height = Integer.parseInt(userInput.substring(4));
-				if(field.field[height-1][width-1] instanceof Food)
+				if(fieldObj.field[height-1][width-1] instanceof Food)
 				{
 					System.out.println("Food has been planted");
 				}
@@ -71,12 +71,12 @@ public class Farm {
 					String plantTree = keyboard.nextLine();
 					if(plantTree.substring(0).equals("a") && startingFunds - Apples.getCost() >=0 )
 					{
-						field.plant(height-1, width-1, new Apples());
+						fieldObj.plant(height-1, width-1, new Apples());
 						startingFunds -= Apples.getCost();
 					}
 					else if(plantTree.substring(0).equals("g") && startingFunds - Grain.getCost() >=0 )
 					{
-						field.plant(height-1, width -1, new Grain());
+						fieldObj.plant(height-1, width -1, new Grain());
 						startingFunds -= Grain.getCost();
 					}
 					else
@@ -87,18 +87,18 @@ public class Farm {
 			}
 			else if(userInput.substring(0,1).equals("s"))
 			{
-				System.out.println(field.getSummary());
+				System.out.println(fieldObj.getSummary());
 			}
 			else if(userInput.substring(0,1).equals("w"))
 			{
-				field.tick();
+				fieldObj.tick();
 				continue;
 			}
 			else
 			{
 				System.out.println("Invalid input"+"\n");
 			}
-			field.tick(); // after each action, the field ages.
+			fieldObj.tick(); // after each action, the field ages.
 		}
 	}
 }
