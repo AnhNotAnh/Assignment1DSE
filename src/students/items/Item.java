@@ -39,10 +39,18 @@ public abstract class Item {
 		
 	}
 	
-	// getValue for Food item will be in Food class
+	// Check if food's age pass its maturation age
 	public int getValue() 
-	{ 
-		return monetaryValue;
+	{
+		if(this instanceof Food)
+		{
+			if(age > maturationAge)
+				return monetaryValue;
+			else
+				return 0;
+		}
+		else
+			return monetaryValue;
 	}
 	
 	/*Uncompleted function, review lecture 2, page 210 */

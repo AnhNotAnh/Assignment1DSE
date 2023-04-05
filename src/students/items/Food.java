@@ -7,17 +7,6 @@ public abstract class Food extends Item {
 		super(maturationAge, deathAge, monetaryValue);
 	
 	}
-	
-	@Override
-	public int getValue() 
-	{ 
-		if(age > maturationAge)
-			return monetaryValue;
-		else
-			return 0;
-	}
-	
-
 
 }
 	
