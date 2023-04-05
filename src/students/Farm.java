@@ -92,6 +92,7 @@ public class Farm {
 			else if(userInput.substring(0,1).equals("w"))
 			{
 				field.tick();
+				continue;
 			}
 			else
 			{
