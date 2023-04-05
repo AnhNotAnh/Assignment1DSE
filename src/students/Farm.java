@@ -38,24 +38,28 @@ public class Farm {
 			{
 				quit = false;
 			}
-			else if(userInput.substring(0,1).equals("t")) // works
+			else if(userInput.substring(0,1).equals("t")) // e.g t 5 1 -> width = 5 and height =1 
 			{
-				int height = Integer.parseInt(userInput.substring(2,3));
-				int weight = Integer.parseInt(userInput.substring(4));
-				field.till(height -1, weight -1);
-				System.out.println(height +" "+ weight);
+				int width = Integer.parseInt(userInput.substring(2,3));
+				int height = Integer.parseInt(userInput.substring(4));
+				field.till(height -1, width -1); //(x, y)
+				System.out.println(height +" "+ width);
 			}
 			else if(userInput.substring(0,1).equals("h"))
 			{
-				int height = Integer.parseInt(userInput.substring(2, 3));
-				int weight = Integer.parseInt(userInput.substring(4));
-				field.harvest(height -1, weight -1);
+				int width = Integer.parseInt(userInput.substring(2,3));
+				int height = Integer.parseInt(userInput.substring(4));
+				String foodName = field.field[height-1][width-1].toString();
+				int value = field.harvest(height -1, width -1);
+				startingFunds += value;
+				System.out.println("Sold "+ foodName + " for "
+									+ value+"\n");
 			}
-			else if(userInput.substring(0,1).equals("p")) // uncompleted, plant 3 4 but at 4 5 ??
+			else if(userInput.substring(0,1).equals("p")) 
 			{
-				int height = Integer.parseInt(userInput.substring(2, 3));
-				int weight = Integer.parseInt(userInput.substring(4));
-				if(field.field[height-1][weight-1] instanceof Food)
+				int width = Integer.parseInt(userInput.substring(2,3));
+				int height = Integer.parseInt(userInput.substring(4));
+				if(field.field[height-1][width-1] instanceof Food)
 				{
 					System.out.println("Food has been planted");
 				}
@@ -67,12 +71,12 @@ public class Farm {
 					String plantTree = keyboard.nextLine();
 					if(plantTree.substring(0).equals("a"))
 					{
-						field.plant(height-1, weight-1,new Apples());
+						field.plant(height-1, width-1, new Apples());
 						startingFunds -= Apples.getCost();
 					}
 					else if(plantTree.substring(0).equals("g"))
 					{
-						field.plant(height-1, weight -1, new Grain());
+						field.plant(height-1, width -1, new Grain());
 						startingFunds -= Grain.getCost();
 					}
 					else

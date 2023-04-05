@@ -66,10 +66,11 @@ public class Field {
 		field[x][y]= food;
 	}
 	
-	public void harvest(int x, int y) 
+	public int harvest(int x, int y) 
 	{
 		int foodValue = field[x][y].getValue();
 		field[x][y] = new Soil();
+		return foodValue;
 	}
 
 	public int getValue()
