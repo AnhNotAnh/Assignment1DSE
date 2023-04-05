@@ -37,26 +37,25 @@ public class Farm {
 			if(userInput.substring(0,1).equals("q"))
 			{
 				quit = false;
-				System.out.println(quit);
 			}
-			else if(userInput.substring(0,1).equals("t")) // till not working
+			else if(userInput.substring(0,1).equals("t")) // works
 			{
 				int height = Integer.parseInt(userInput.substring(2,3));
 				int weight = Integer.parseInt(userInput.substring(4));
-				field.till(height, weight);
+				field.till(height -1, weight -1);
 				System.out.println(height +" "+ weight);
 			}
 			else if(userInput.substring(0,1).equals("h"))
 			{
 				int height = Integer.parseInt(userInput.substring(2, 3));
 				int weight = Integer.parseInt(userInput.substring(4));
-				field.harvest(height, weight);
+				field.harvest(height -1, weight -1);
 			}
 			else if(userInput.substring(0,1).equals("p")) // uncompleted, plant 3 4 but at 4 5 ??
 			{
 				int height = Integer.parseInt(userInput.substring(2, 3));
 				int weight = Integer.parseInt(userInput.substring(4));
-				if(field.field[height][weight] instanceof Food)
+				if(field.field[height-1][weight-1] instanceof Food)
 				{
 					System.out.println("Food has been planted");
 				}
@@ -68,12 +67,12 @@ public class Farm {
 					String plantTree = keyboard.nextLine();
 					if(plantTree.substring(0).equals("a"))
 					{
-						field.plant(height, weight,new Apples());
+						field.plant(height-1, weight-1,new Apples());
 						startingFunds -= Apples.getCost();
 					}
 					else if(plantTree.substring(0).equals("g"))
 					{
-						field.plant(height, weight, new Grain());
+						field.plant(height-1, weight -1, new Grain());
 						startingFunds -= Grain.getCost();
 					}
 					else
