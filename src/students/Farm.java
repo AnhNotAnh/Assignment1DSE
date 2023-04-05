@@ -69,12 +69,12 @@ public class Farm {
 										"- 'a' to buy an apple for $2" + "\n"+
 										"- 'g' to buy an grain for $1"+ "\n");
 					String plantTree = keyboard.nextLine();
-					if(plantTree.substring(0).equals("a"))
+					if(plantTree.substring(0).equals("a") && startingFunds - Apples.getCost() >=0 )
 					{
 						field.plant(height-1, width-1, new Apples());
 						startingFunds -= Apples.getCost();
 					}
-					else if(plantTree.substring(0).equals("g"))
+					else if(plantTree.substring(0).equals("g") && startingFunds - Grain.getCost() >=0 )
 					{
 						field.plant(height-1, width -1, new Grain());
 						startingFunds -= Grain.getCost();
@@ -97,6 +97,7 @@ public class Farm {
 			{
 				System.out.println("Invalid input"+"\n");
 			}
+			field.tick(); // after each action, the field ages.
 		}
 	}
 }
