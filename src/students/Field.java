@@ -56,9 +56,35 @@ public class Field {
 	
 	
 	// using clone or copy? (uncompleted)
-	public Item get(int x, int y)
+	public Item get(int x, int y) throws CloneNotSupportedException
 	{
-		return field[x][y];
+		if(field[x][y] instanceof Apples)
+		{
+			Apples appleCopy = (Apples)field[x][y].clone();
+			return appleCopy;
+		}
+		else if(field[x][y] instanceof Grain)
+		{
+			Grain grainCopy = (Grain)field[x][y].clone();
+			return grainCopy;
+		}
+		else if(field[x][y] instanceof Soil)
+		{
+			Soil soilCopy = (Soil)field[x][y].clone();
+			return soilCopy;
+		}
+		else if(field[x][y] instanceof UntilledSoil)
+		{
+			UntilledSoil untilledSoilCopy = (UntilledSoil)field[x][y].clone();
+			return untilledSoilCopy;
+		}
+		else if(field[x][y] instanceof Weed)
+		{
+			Weed weedCopy = (Weed)field[x][y].clone();
+			return weedCopy;
+		}
+		else
+			return field[x][y];
 	}
 	
 	public void plant(int x, int y, Item food) 

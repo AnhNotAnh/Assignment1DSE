@@ -1,6 +1,6 @@
 package students.items;
 
-public abstract class Item {
+public abstract class Item implements Cloneable {
 	
 	protected int age;
 	protected int maturationAge;
@@ -52,6 +52,18 @@ public abstract class Item {
 		else
 			return monetaryValue;
 	}
+	
+	public Object clone() throws CloneNotSupportedException
+	{
+		Item copy =(Item)super.clone();
+		copy.monetaryValue = this.monetaryValue;
+		copy.maturationAge = this.maturationAge;
+		copy.deathAge = this.deathAge;
+		copy.age = this.age;
+		
+		return copy;
+	}
+	
 	
 	/*Uncompleted function, review lecture 2, page 210 */
 	@Override
