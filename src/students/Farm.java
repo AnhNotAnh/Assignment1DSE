@@ -44,6 +44,15 @@ public class Farm {
 				{
 					quit = true;
 				}
+				else if(order.equals("s"))
+				{
+					System.out.println(fieldObj.getSummary());
+				}
+				else if(order.equals("w"))
+				{
+					fieldObj.tick();
+					continue;
+				}
 				else if(order.equals("t"))
 				{
 					int firstSpaceIdx = userInput.indexOf(" "); 
@@ -101,15 +110,6 @@ public class Farm {
 							System.out.println("Invalid input");
 						}
 					}
-				}
-				else if(order.equals("s"))
-				{
-					System.out.println(fieldObj.getSummary());
-				}
-				else if(order.equals("w"))
-				{
-					fieldObj.tick();
-					continue;
 				}
 				else 
 				{
