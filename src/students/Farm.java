@@ -17,7 +17,7 @@ public class Farm {
 		this.fieldObj = new Field(fieldHeight, fieldWidth);
 	}
 	
-	public void run() // fail to test t 10 2 as x = "1" and y =" 2"
+	public void run()
 	{
 		boolean quit = true;
 		while(quit) 
@@ -37,27 +37,22 @@ public class Farm {
 			userInput = userInput.trim();
 			try 
 			{
+				int firstSpaceIdx = userInput.indexOf(" "); 
+				String location = userInput.substring(firstSpaceIdx + 1);
+				int secondSpaceIdx = location.indexOf(" "); 
+				int width = Integer.parseInt(location.substring(0, secondSpaceIdx)); 
+				int height = Integer.parseInt(location.substring(secondSpaceIdx + 1)); 
+				
 				if(userInput.substring(0,1).equals("q"))
 				{
 					quit = false;
 				}
-				else if(userInput.substring(0,1).equals("t")) // e.g t 10 2 -> width = 10 and height =2 , fix other functions !!!!!!!!
+				else if(userInput.substring(0,1).equals("t"))
 				{
-					int firstSpaceIdx = userInput.indexOf(" "); // return 1
-					String location = userInput.substring(firstSpaceIdx + 1); // return "10 2"
-					int secondSpaceIdx = location.indexOf(" "); // return 2
-					
-					int width = Integer.parseInt(location.substring(0, secondSpaceIdx)); // return 10
-					int height = Integer.parseInt(location.substring(secondSpaceIdx + 1)); // return 2
 					fieldObj.till(height -1, width -1); //(x, y)
-					
-					System.out.println(firstSpaceIdx+ " "+location+" " + secondSpaceIdx+ "\n"); // return 1 10 2 2
-					System.out.println(width +" "+ height ); // 10 2
 				}
 				else if(userInput.substring(0,1).equals("h"))
 				{
-					int width = Integer.parseInt(userInput.substring(2,3));
-					int height = Integer.parseInt(userInput.substring(4));
 					String foodName = fieldObj.field[height-1][width-1].toString();
 					int value = fieldObj.harvest(height -1, width -1);
 					startingFunds += value;
@@ -66,8 +61,6 @@ public class Farm {
 				}
 				else if(userInput.substring(0,1).equals("p")) 
 				{
-					int width = Integer.parseInt(userInput.substring(2,3));
-					int height = Integer.parseInt(userInput.substring(4));
 					if(fieldObj.field[height-1][width-1] instanceof Food)
 					{
 						System.out.println("Food has been planted");
@@ -103,7 +96,7 @@ public class Farm {
 					fieldObj.tick();
 					continue;
 				}
-				else
+				else // This case is handled. Adding else statement won't crash the program, it's for understanding purpose.
 				{
 					System.out.println("Invalid input, please try again !"+"\n");
 					continue;
@@ -112,7 +105,11 @@ public class Farm {
 			}
 			catch(StringIndexOutOfBoundsException e)
 			{
-				System.out.println("Empty input found, please try again !"+"\n");
+				System.out.println("Empty/Invalid input found, please try again !"+"\n");
+			}
+			catch(NumberFormatException e)
+			{
+				System.out.println("Wrong format, please try again !"+"\n");
 			}
 		}
 	}
