@@ -19,8 +19,9 @@ public class Farm {
 	
 	public void run() throws ArrayIndexOutOfBoundsException
 	{
-		boolean quit = true;
-		while(quit) 
+		Scanner keyboard = new Scanner(System.in);
+		boolean quit = false;
+		while(!quit) 
 		{
 			System.out.println(fieldObj);
 			System.out.printf("Bank balance: $"+ "%2d ", startingFunds);
@@ -32,38 +33,49 @@ public class Farm {
 								"  s: field summary"+ "\n"+
 								"  w: wait"+ "\n"+
 								"  q: quit" +"\n");
-			Scanner keyboard = new Scanner(System.in);
-			String userInput = keyboard.nextLine();
-			userInput = userInput.trim();
+			String userInput = keyboard.nextLine().trim();
+			String order = userInput.substring(0,1);
 			try 
 			{
-//				if(userInput.isEmpty()) {
-//				    throw new StringIndexOutOfBoundsException();
-//				}
-				int firstSpaceIdx = userInput.indexOf(" "); 
-				String location = userInput.substring(firstSpaceIdx + 1);
-				int secondSpaceIdx = location.indexOf(" "); 
-				int width = Integer.parseInt(location.substring(0, secondSpaceIdx)); 
-				int height = Integer.parseInt(location.substring(secondSpaceIdx + 1)); 
-				
-				if(userInput.substring(0,1).equals("q")) // q does not execute as it will throw StringIndexOutOfBoundsException
-				{
-					quit = false;
+				if(userInput.isEmpty()) {
+				    throw new StringIndexOutOfBoundsException();
 				}
-				else if(userInput.substring(0,1).equals("t"))
+				if(order.equals("q")) 
 				{
+					quit = true;
+				}
+				else if(order.equals("t"))
+				{
+					int firstSpaceIdx = userInput.indexOf(" "); 
+					String location = userInput.substring(firstSpaceIdx + 1);
+					int secondSpaceIdx = location.indexOf(" "); 
+					int width = Integer.parseInt(location.substring(0, secondSpaceIdx)); 
+					int height = Integer.parseInt(location.substring(secondSpaceIdx + 1)); 
+					
 					fieldObj.till(height -1, width -1); //(x, y)
 				}
-				else if(userInput.substring(0,1).equals("h"))
+				else if(order.equals("h"))
 				{
+					int firstSpaceIdx = userInput.indexOf(" "); 
+					String location = userInput.substring(firstSpaceIdx + 1);
+					int secondSpaceIdx = location.indexOf(" "); 
+					int width = Integer.parseInt(location.substring(0, secondSpaceIdx)); 
+					int height = Integer.parseInt(location.substring(secondSpaceIdx + 1)); 
+					
 					String foodName = fieldObj.field[height-1][width-1].toString();
 					int value = fieldObj.harvest(height -1, width -1);
 					startingFunds += value;
 					System.out.println("Sold "+ foodName + " for "
 										+ value+"\n");
 				}
-				else if(userInput.substring(0,1).equals("p")) 
+				else if(order.equals("p")) 
 				{
+					int firstSpaceIdx = userInput.indexOf(" "); 
+					String location = userInput.substring(firstSpaceIdx + 1);
+					int secondSpaceIdx = location.indexOf(" "); 
+					int width = Integer.parseInt(location.substring(0, secondSpaceIdx)); 
+					int height = Integer.parseInt(location.substring(secondSpaceIdx + 1)); 
+					
 					if(fieldObj.field[height-1][width-1] instanceof Food)
 					{
 						System.out.println("Food has been planted");
@@ -90,16 +102,16 @@ public class Farm {
 						}
 					}
 				}
-				else if(userInput.substring(0,1).equals("s"))
+				else if(order.equals("s"))
 				{
 					System.out.println(fieldObj.getSummary());
 				}
-				else if(userInput.substring(0,1).equals("w"))
+				else if(order.equals("w"))
 				{
 					fieldObj.tick();
 					continue;
 				}
-				else // This case is handled. Adding else statement won't crash the program, it's for understanding purpose.
+				else 
 				{
 					System.out.println("Invalid input, please try again !"+"\n");
 					continue;
@@ -111,11 +123,11 @@ public class Farm {
 				System.out.println("Out of bounds, please enter number within width of "
 									+ this.fieldWidth + " and height of "+ this.fieldHeight +" !" +"\n");
 			}
-			catch(StringIndexOutOfBoundsException e)
+			catch(StringIndexOutOfBoundsException e) // Empty input
 			{
-				System.out.println("Empty/Invalid input found, please try again !"+"\n");
+				System.out.println("Empty input found, please try again !"+"\n");
 			}
-			catch(NumberFormatException e)
+			catch(NumberFormatException e) // Wrong format lead to incorrectly parse integer because it may contain non-integer value.
 			{
 				System.out.println("Wrong format, please try again !"+"\n");
 			}
