@@ -23,7 +23,6 @@ public class Field {
 		}
 	}
 	
-	
 	public void tick()
 	{
 		for (int heightcount = 0; heightcount < height; heightcount++)
@@ -54,8 +53,6 @@ public class Field {
 		field[x][y]= new Soil();
 	}
 	
-	
-	// using clone or copy? (uncompleted)
 	public Item get(int x, int y) throws CloneNotSupportedException
 	{
 		if(field[x][y] instanceof Apples)
@@ -112,8 +109,6 @@ public class Field {
 		return totalValue;
 	}
 	
-	// Will this using getGenCount? use instance of, using switch, case?
-	// Do we need to check if that's food ?
 	public String getSummary()
 	{	
 		int numOfApple = 0;
@@ -145,7 +140,6 @@ public class Field {
 				{
 					numOfWeed +=1;
 				}
-				
 			}
 		}
 		return "Apples:        " + numOfApple +"\n" +
@@ -158,7 +152,6 @@ public class Field {
 				"Total grain created: "+ Grain.getGenerationCount();
 	}
 	
-	//How to create numbered grid?
 	@Override
 	public String toString()
 	{	

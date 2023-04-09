@@ -62,16 +62,17 @@ public abstract class Item implements Cloneable {
 		copy.age = this.age;		
 		return copy;
 	}
-	
-	
-	/*Uncompleted function, review lecture 2, page 210 */
+
 	@Override
 	public boolean equals(Object otherObject)
 	{
+		/**Check if otherObject and item are same memory location, 
+		 * else check if it is an instance of Item then assigning new variable,
+		 * casting it to Item and check condition otherwise false */
 		
-		if(otherObject == this)//check if otherObject and item are same memory location
+		if(otherObject == this)
 			return true;
-		else // check if it is an instance of Item then assigning new variable, casting it to Item and check condition otherwise false
+		else
 			if(otherObject instanceof Item)
 			{
 				Item itemObject = (Item)otherObject; 
@@ -80,7 +81,7 @@ public abstract class Item implements Cloneable {
 						itemObject.maturationAge ==this.maturationAge &&
 						itemObject.monetaryValue ==this.monetaryValue;
 			}
-			else // if it's not instance of Item
+			else
 				return false;
 	}
 	
