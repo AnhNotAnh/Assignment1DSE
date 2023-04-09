@@ -38,12 +38,18 @@ public class Farm {
 			{
 				quit = false;
 			}
-			else if(userInput.substring(0,1).equals("t")) // e.g t 5 1 -> width = 5 and height =1 
+			else if(userInput.substring(0,1).equals("t")) // e.g t 10 2 -> width = 10 and height =2 
 			{
-				int width = Integer.parseInt(userInput.substring(2,3));
-				int height = Integer.parseInt(userInput.substring(4));
+				int firstSpaceIdx = userInput.indexOf(" "); // return 1
+				String location = userInput.substring(firstSpaceIdx + 1); // return "10 2"
+				int secondSpaceIdx = location.indexOf(" "); // return 2
+				
+				int width = Integer.parseInt(location.substring(0, secondSpaceIdx)); // return 10
+				int height = Integer.parseInt(location.substring(secondSpaceIdx + 1)); // return 2
 				fieldObj.till(height -1, width -1); //(x, y)
-				System.out.println(height +" "+ width);
+				
+				System.out.println(firstSpaceIdx+ " "+location+" " + secondSpaceIdx+ "\n"); // return 1 10 2 2
+				System.out.println(width +" "+ height ); // 10 2
 			}
 			else if(userInput.substring(0,1).equals("h"))
 			{
