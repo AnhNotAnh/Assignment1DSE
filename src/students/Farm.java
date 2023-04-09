@@ -37,20 +37,16 @@ public class Farm {
 			userInput = userInput.trim();
 			try 
 			{
+//				if(userInput.isEmpty()) {
+//				    throw new StringIndexOutOfBoundsException();
+//				}
 				int firstSpaceIdx = userInput.indexOf(" "); 
 				String location = userInput.substring(firstSpaceIdx + 1);
 				int secondSpaceIdx = location.indexOf(" "); 
 				int width = Integer.parseInt(location.substring(0, secondSpaceIdx)); 
 				int height = Integer.parseInt(location.substring(secondSpaceIdx + 1)); 
-//				if (width <0 && width > fieldWidth)
-//				{
-//					throw new ArrayIndexOutOfBoundsException("Index "+ width + 1 + "out of bounds for length " + fieldWidth );
-//				}
-//				else if ((height <0 && width > fieldHeight))
-//				{
-//					throw new ArrayIndexOutOfBoundsException("Index "+ height+ 1 + "out of bounds for length " + fieldHeight );
-//				}
-				if(userInput.substring(0,1).equals("q"))
+				
+				if(userInput.substring(0,1).equals("q")) // q does not execute as it will throw StringIndexOutOfBoundsException
 				{
 					quit = false;
 				}
@@ -112,8 +108,8 @@ public class Farm {
 			}
 			catch(ArrayIndexOutOfBoundsException e)
 			{
-				String message = e.getMessage();
-				System.out.println("Out of bounds, please try again !"+"\n"+ message);
+				System.out.println("Out of bounds, please enter number within width of "
+									+ this.fieldWidth + " and height of "+ this.fieldHeight +" !" +"\n");
 			}
 			catch(StringIndexOutOfBoundsException e)
 			{
