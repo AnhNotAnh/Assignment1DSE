@@ -17,13 +17,13 @@ public class Farm {
 		this.fieldObj = new Field(fieldHeight, fieldWidth);
 	}
 	
-	public void run()
+	public void run() // fail to test t 10 2 as x = "1" and y =" 2"
 	{
 		boolean quit = true;
 		while(quit) 
 		{
 			System.out.println(fieldObj);
-			System.out.printf("Bank balance: "+ "%2d ", startingFunds);
+			System.out.printf("Bank balance: $"+ "%2d ", startingFunds);
 			System.out.println();
 			System.out.println("Enter your next action:"+"\n"+
 								"  t x y: till"+"\n"+

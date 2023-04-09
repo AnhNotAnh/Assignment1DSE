@@ -59,8 +59,7 @@ public abstract class Item implements Cloneable {
 		copy.monetaryValue = this.monetaryValue;
 		copy.maturationAge = this.maturationAge;
 		copy.deathAge = this.deathAge;
-		copy.age = this.age;
-		
+		copy.age = this.age;		
 		return copy;
 	}
 	
