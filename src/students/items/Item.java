@@ -39,7 +39,6 @@ public abstract class Item implements Cloneable {
 		
 	}
 	
-	// Check if food's age pass its maturation age
 	public int getValue() 
 	{
 		if(this instanceof Food)
@@ -66,9 +65,9 @@ public abstract class Item implements Cloneable {
 	@Override
 	public boolean equals(Object otherObject)
 	{
-		/**Check if otherObject and item are same memory location, 
+		/*Check if otherObject and item are same memory location, 
 		 * else check if it is an instance of Item then assigning new variable,
-		 * casting it to Item and check condition otherwise false */
+		 * casting it to Item and check against condition otherwise false */
 		
 		if(otherObject == this)
 			return true;
