@@ -34,6 +34,9 @@ public class Farm {
 								"  q: quit" +"\n");
 			Scanner keyboard = new Scanner(System.in);
 			String userInput = keyboard.nextLine();
+			System.out.println(userInput); // delete later
+			userInput = userInput.trim();
+			System.out.println(userInput); // delete later
 			if(userInput.substring(0,1).equals("q"))
 			{
 				quit = false;
@@ -100,9 +103,15 @@ public class Farm {
 				fieldObj.tick();
 				continue;
 			}
+//			else if(userInput.substring(0,1).equals("")) // how handle StringIndexOutOfBoundsException ??
+//			{
+//				System.out.println("Empty input found, please try again !"+"\n");
+//				continue;
+//			}
 			else
 			{
-				System.out.println("Invalid input"+"\n");
+				System.out.println("Invalid input, please try again !"+"\n");
+				continue;
 			}
 			fieldObj.tick(); // after each action, the field ages.
 		}
