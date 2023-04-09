@@ -19,6 +19,11 @@ public class Farm {
 	
 	public void run() throws ArrayIndexOutOfBoundsException
 	{
+		/* The player will initiate the game by executing the 'run()' function. 
+		 * This function prompts the user to input commands according to the given rules,
+		 * and the program will respond accordingly.
+		 * Unexpected input will result in skipping the turn of user, and prompting error message */
+		
 		Scanner keyboard = new Scanner(System.in);
 		boolean quit = false;
 		while(!quit) 
@@ -114,18 +119,18 @@ public class Farm {
 					System.out.println("Invalid input, please try again !"+"\n");
 					continue;
 				}
-				fieldObj.tick(); // after each action, the field ages.
+				fieldObj.tick(); // After each action, the field ages.
 			}
-			catch(ArrayIndexOutOfBoundsException e)
+			catch(ArrayIndexOutOfBoundsException e) // Out of field's bound.
 			{
 				System.out.println("Out of bounds, please enter number within width of "
 									+ this.fieldWidth + " and height of "+ this.fieldHeight +" !" +"\n");
 			}
-			catch(StringIndexOutOfBoundsException e) // Empty input
+			catch(StringIndexOutOfBoundsException e) // Empty input from user.
 			{
 				System.out.println("Empty input found, please try again !"+"\n");
 			}
-			catch(NumberFormatException e) // Wrong format lead to incorrectly parse integer because it may contain non-integer value.
+			catch(NumberFormatException e) // Wrong format lead to being unable to parse integer because it may contain non-integer value.
 			{
 				System.out.println("Wrong format, please try again !"+"\n");
 			}

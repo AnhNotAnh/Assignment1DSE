@@ -20,7 +20,7 @@ public abstract class Item implements Cloneable {
 	
 	public void tick() 
 	{
-		 this.age ++;
+		 age ++;
 	}
 	
 	
@@ -32,7 +32,7 @@ public abstract class Item implements Cloneable {
 	
 	public boolean died () 
 	{
-		if (this.age > this.deathAge) {
+		if (age > deathAge) {
 			return true;
 		}
 		return false;
@@ -54,6 +54,9 @@ public abstract class Item implements Cloneable {
 	
 	public Object clone() throws CloneNotSupportedException
 	{
+		/* Make deep copy of object and return the copy,
+		 * throw CloneNotSupportedException when using clone method. */
+		
 		Item copy =(Item)super.clone();
 		copy.monetaryValue = this.monetaryValue;
 		copy.maturationAge = this.maturationAge;
@@ -65,7 +68,7 @@ public abstract class Item implements Cloneable {
 	@Override
 	public boolean equals(Object otherObject)
 	{
-		/*Check if otherObject and item are same memory location, 
+		/* Check if otherObject and item are same memory location, 
 		 * else check if it is an instance of Item then assigning new variable,
 		 * casting it to Item and check against condition otherwise false */
 		

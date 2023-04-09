@@ -25,6 +25,9 @@ public class Field {
 	
 	public void tick()
 	{
+		/* Execute aging process of every item in the field,
+		 * 1/5 chance randomly grow weed pest if item is Soil,
+		 * and turn item to UntilledSoil if died after aging. */
 		for (int heightcount = 0; heightcount < height; heightcount++)
 		{
 			for (int witdthcount = 0; witdthcount < width; witdthcount++)
@@ -55,6 +58,10 @@ public class Field {
 	
 	public Item get(int x, int y) throws CloneNotSupportedException
 	{
+		/* Check if an item in the field is instance of specific type item such as Soil, Food,
+		 * create copy of that item using clone() and return it.
+		 * Throwing CloneNotSupportedException while using clone(), get() is necessary */
+		
 		if(field[x][y] instanceof Apples)
 		{
 			Apples appleCopy = (Apples)field[x][y].clone();
@@ -91,6 +98,10 @@ public class Field {
 	
 	public int harvest(int x, int y) 
 	{
+		/* To harvest, this function will get value of item in given location
+		 * turn the current location back to soil after harvesting,
+		 * and return the value of item */
+		
 		int foodValue = field[x][y].getValue();
 		field[x][y] = new Soil();
 		return foodValue;
@@ -111,6 +122,9 @@ public class Field {
 	
 	public String getSummary()
 	{	
+		/* Calculate the amount of each item in the field,
+		 * and generate a summary with total value of field */
+		
 		int numOfApple = 0;
 		int numOfGrain = 0;
 		int numOfSoil = 0;
@@ -155,6 +169,8 @@ public class Field {
 	@Override
 	public String toString()
 	{	
+		/* Generate numbered grid with all soil item */
+		
 		String printable = "";
 		for (int heightcount = 0; heightcount <= height; heightcount++)
 		{
