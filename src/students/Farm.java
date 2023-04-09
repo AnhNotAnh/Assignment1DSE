@@ -2,8 +2,8 @@ package students;
 import java.util.Scanner;
 import students.items.*;
 
-public class Farm {
-	
+public class Farm 
+{	
 	protected int fieldWidth;
 	protected int fieldHeight;
 	protected int startingFunds;

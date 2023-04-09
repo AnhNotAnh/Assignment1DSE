@@ -3,8 +3,8 @@ import students.items.*;
 
 import java.util.Random;
 
-public class Field {
-	
+public class Field 
+{	
 	protected Item[][] field;
 	protected int height;
 	protected int width;

@@ -1,7 +1,7 @@
 package students.items;
 
-public abstract class Item implements Cloneable {
-	
+public abstract class Item implements Cloneable 
+{	
 	protected int age;
 	protected int maturationAge;
 	protected int deathAge;

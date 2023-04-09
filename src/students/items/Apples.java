@@ -1,7 +1,7 @@
 package students.items;
 
-public class Apples extends Food {
-	
+public class Apples extends Food 
+{	
 	private static int counter =0;
 	protected final static int cost = 2;
 	
@@ -11,7 +11,6 @@ public class Apples extends Food {
 		counter++;
 	}
 	
-	/*Lecture 3? explanation*/
 	public static int getGenerationCount()
 	{
 		return counter;
