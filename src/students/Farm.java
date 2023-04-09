@@ -17,7 +17,7 @@ public class Farm {
 		this.fieldObj = new Field(fieldHeight, fieldWidth);
 	}
 	
-	public void run()
+	public void run() throws ArrayIndexOutOfBoundsException
 	{
 		boolean quit = true;
 		while(quit) 
@@ -42,7 +42,14 @@ public class Farm {
 				int secondSpaceIdx = location.indexOf(" "); 
 				int width = Integer.parseInt(location.substring(0, secondSpaceIdx)); 
 				int height = Integer.parseInt(location.substring(secondSpaceIdx + 1)); 
-				
+//				if (width <0 && width > fieldWidth)
+//				{
+//					throw new ArrayIndexOutOfBoundsException("Index "+ width + 1 + "out of bounds for length " + fieldWidth );
+//				}
+//				else if ((height <0 && width > fieldHeight))
+//				{
+//					throw new ArrayIndexOutOfBoundsException("Index "+ height+ 1 + "out of bounds for length " + fieldHeight );
+//				}
 				if(userInput.substring(0,1).equals("q"))
 				{
 					quit = false;
@@ -102,6 +109,11 @@ public class Farm {
 					continue;
 				}
 				fieldObj.tick(); // after each action, the field ages.
+			}
+			catch(ArrayIndexOutOfBoundsException e)
+			{
+				String message = e.getMessage();
+				System.out.println("Out of bounds, please try again !"+"\n"+ message);
 			}
 			catch(StringIndexOutOfBoundsException e)
 			{
