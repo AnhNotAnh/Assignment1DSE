@@ -37,7 +37,8 @@ public class Farm {
 			String order = userInput.substring(0,1);
 			try 
 			{
-				if(userInput.isEmpty()) {
+				if(userInput.isEmpty()) 
+				{
 				    throw new StringIndexOutOfBoundsException();
 				}
 				if(order.equals("q")) 
@@ -53,7 +54,7 @@ public class Farm {
 					fieldObj.tick();
 					continue;
 				}
-				else if(order.equals("t"))
+				else if(userInput.length()>1)
 				{
 					int firstSpaceIdx = userInput.indexOf(" "); 
 					String location = userInput.substring(firstSpaceIdx + 1);
@@ -61,54 +62,51 @@ public class Farm {
 					int width = Integer.parseInt(location.substring(0, secondSpaceIdx)); 
 					int height = Integer.parseInt(location.substring(secondSpaceIdx + 1)); 
 					
-					fieldObj.till(height -1, width -1); //(x, y)
-				}
-				else if(order.equals("h"))
-				{
-					int firstSpaceIdx = userInput.indexOf(" "); 
-					String location = userInput.substring(firstSpaceIdx + 1);
-					int secondSpaceIdx = location.indexOf(" "); 
-					int width = Integer.parseInt(location.substring(0, secondSpaceIdx)); 
-					int height = Integer.parseInt(location.substring(secondSpaceIdx + 1)); 
-					
-					String foodName = fieldObj.field[height-1][width-1].toString();
-					int value = fieldObj.harvest(height -1, width -1);
-					startingFunds += value;
-					System.out.println("Sold "+ foodName + " for "
-										+ value+"\n");
-				}
-				else if(order.equals("p")) 
-				{
-					int firstSpaceIdx = userInput.indexOf(" "); 
-					String location = userInput.substring(firstSpaceIdx + 1);
-					int secondSpaceIdx = location.indexOf(" "); 
-					int width = Integer.parseInt(location.substring(0, secondSpaceIdx)); 
-					int height = Integer.parseInt(location.substring(secondSpaceIdx + 1)); 
-					
-					if(fieldObj.field[height-1][width-1] instanceof Food)
+					if(order.equals("t"))
 					{
-						System.out.println("Food has been planted");
+						fieldObj.till(height -1, width -1); //(x, y)
+					}
+					else if(order.equals("h"))
+					{
+						String foodName = fieldObj.field[height-1][width-1].toString();
+						int value = fieldObj.harvest(height -1, width -1);
+						startingFunds += value;
+						System.out.println("Sold "+ foodName + " for "
+											+ value+"\n");
+					}
+					else if(order.equals("p")) 
+					{
+						if(fieldObj.field[height-1][width-1] instanceof Food)
+						{
+							System.out.println("Food has been planted");
+						}
+						else 
+						{
+							System.out.println("Enter:"+"\n"+
+												"- 'a' to buy an apple for $2" + "\n"+
+												"- 'g' to buy an grain for $1"+ "\n");
+							String plantTree = keyboard.nextLine();
+							if(plantTree.substring(0).equals("a") && startingFunds - Apples.getCost() >=0 )
+							{
+								fieldObj.plant(height-1, width-1, new Apples());
+								startingFunds -= Apples.getCost();
+							}
+							else if(plantTree.substring(0).equals("g") && startingFunds - Grain.getCost() >=0 )
+							{
+								fieldObj.plant(height-1, width -1, new Grain());
+								startingFunds -= Grain.getCost();
+							}
+							else
+							{
+								System.out.println("Invalid input"+"\n");
+								continue;
+							}
+						}
 					}
 					else 
 					{
-						System.out.println("Enter:"+"\n"+
-											"- 'a' to buy an apple for $2" + "\n"+
-											"- 'g' to buy an grain for $1"+ "\n");
-						String plantTree = keyboard.nextLine();
-						if(plantTree.substring(0).equals("a") && startingFunds - Apples.getCost() >=0 )
-						{
-							fieldObj.plant(height-1, width-1, new Apples());
-							startingFunds -= Apples.getCost();
-						}
-						else if(plantTree.substring(0).equals("g") && startingFunds - Grain.getCost() >=0 )
-						{
-							fieldObj.plant(height-1, width -1, new Grain());
-							startingFunds -= Grain.getCost();
-						}
-						else
-						{
-							System.out.println("Invalid input");
-						}
+						System.out.println("Invalid input"+"\n");
+						continue;
 					}
 				}
 				else 
