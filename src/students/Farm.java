@@ -61,6 +61,11 @@ public class Farm
 						fieldObj.tick();
 						continue;
 					}
+					else
+					{
+						System.out.println("Invalid input"+"\n");
+						continue;
+					}
 				}
 				else if(userInput.length()>1)
 				{
