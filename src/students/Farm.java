@@ -39,25 +39,28 @@ public class Farm
 								"  w: wait"+ "\n"+
 								"  q: quit" +"\n");
 			String userInput = keyboard.nextLine().trim();
-			String order = userInput.substring(0,1);
 			try 
 			{
-				if(userInput.isEmpty()) 
+				String order = userInput.substring(0,1);
+				if(userInput.length()==1) // To manage the case when double one-word order is entered (e.g qq or ww) 
 				{
-				    throw new StringIndexOutOfBoundsException();
-				}
-				if(order.equals("q")) 
-				{
-					quit = true;
-				}
-				else if(order.equals("s"))
-				{
-					System.out.println(fieldObj.getSummary());
-				}
-				else if(order.equals("w"))
-				{
-					fieldObj.tick();
-					continue;
+					if(userInput.isEmpty()) 
+					{
+					    throw new StringIndexOutOfBoundsException();
+					}
+					if(order.equals("q")) 
+					{
+						quit = true;
+					}
+					else if(order.equals("s"))
+					{
+						System.out.println(fieldObj.getSummary());
+					}
+					else if(order.equals("w"))
+					{
+						fieldObj.tick();
+						continue;
+					}
 				}
 				else if(userInput.length()>1)
 				{
@@ -128,7 +131,7 @@ public class Farm
 			}
 			catch(StringIndexOutOfBoundsException e) // Empty input from user.
 			{
-				System.out.println("Empty input found, please try again !"+"\n");
+				System.out.println("Empty/Invalid input found, please try again !"+"\n");
 			}
 			catch(NumberFormatException e) // Wrong format lead to being unable to parse integer because it may contain non-integer value.
 			{

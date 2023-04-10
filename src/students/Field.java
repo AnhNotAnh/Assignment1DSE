@@ -16,9 +16,9 @@ public class Field
 		this.field = new Item[height][width];
 		for (int heightcount = 0; heightcount < height; heightcount++)
 		{
-			for (int witdthcount = 0; witdthcount < width; witdthcount++)
+			for (int widthcount = 0; widthcount < width; widthcount++)
 			{
-				field[heightcount][witdthcount]= new Soil();
+				field[heightcount][widthcount]= new Soil();
 			}
 		}
 	}
@@ -30,21 +30,21 @@ public class Field
 		 * and turn item to UntilledSoil if died after aging. */
 		for (int heightcount = 0; heightcount < height; heightcount++)
 		{
-			for (int witdthcount = 0; witdthcount < width; witdthcount++)
+			for (int widthcount = 0; widthcount < width; widthcount++)
 			{
-				field[heightcount][witdthcount].tick();
-				if (field[heightcount][witdthcount] instanceof Soil)
+				field[heightcount][widthcount].tick();
+				if (field[heightcount][widthcount] instanceof Soil)
 					{
 						Random dice = new Random();
 						int percentage = dice.nextInt(101);
 						if (percentage <= 20)
 							{
-								field[heightcount][witdthcount] = new Weed();
+								field[heightcount][widthcount] = new Weed();
 							}
 					}
-				if (field[heightcount][witdthcount].died() == true)
+				if (field[heightcount][widthcount].died() == true)
 					{
-						field[heightcount][witdthcount] = new UntilledSoil();
+						field[heightcount][widthcount] = new UntilledSoil();
 					}
 				
 				}
@@ -112,9 +112,9 @@ public class Field
 		int totalValue = 0;
 		for (int heightcount = 0; heightcount < height; heightcount++)
 		{
-			for (int witdthcount = 0; witdthcount < width; witdthcount++)
+			for (int widthcount = 0; widthcount < width; widthcount++)
 			{
-				totalValue += field[heightcount][witdthcount].getValue();
+				totalValue += field[heightcount][widthcount].getValue();
 			}
 		}
 		return totalValue;
@@ -132,25 +132,25 @@ public class Field
 		int numOfWeed = 0;
 		for (int heightcount = 0; heightcount < height; heightcount++)
 		{
-			for (int witdthcount = 0; witdthcount < width; witdthcount++)
+			for (int widthcount = 0; widthcount < width; widthcount++)
 			{
-				if(field[heightcount][witdthcount] instanceof Apples)
+				if(field[heightcount][widthcount] instanceof Apples)
 				{
 					numOfApple +=1;
 				}
-				else if(field[heightcount][witdthcount] instanceof Grain)
+				else if(field[heightcount][widthcount] instanceof Grain)
 				{
 					numOfGrain +=1;
 				}
-				else if(field[heightcount][witdthcount] instanceof Soil)
+				else if(field[heightcount][widthcount] instanceof Soil)
 				{
 					numOfSoil +=1;
 				}
-				else if(field[heightcount][witdthcount] instanceof UntilledSoil)
+				else if(field[heightcount][widthcount] instanceof UntilledSoil)
 				{
 					numOfUntilledSoil +=1;
 				}
-				else if(field[heightcount][witdthcount] instanceof Weed)
+				else if(field[heightcount][widthcount] instanceof Weed)
 				{
 					numOfWeed +=1;
 				}
@@ -174,25 +174,25 @@ public class Field
 		String printable = "";
 		for (int heightcount = 0; heightcount <= height; heightcount++)
 		{
-			for (int witdthcount = 0 ; witdthcount <= width; witdthcount++) 
+			for (int widthcount = 0 ; widthcount <= width; widthcount++) 
 			{
-				if (heightcount == 0 && witdthcount == 0) 
+				if (heightcount == 0 && widthcount == 0) 
 		        {
 		        	printable+="  ";
 		        } 
 				// print numbered column
 				else if (heightcount == 0)
 		        {
-					printable+=" "+ witdthcount;
+					printable+=" "+ widthcount;
 		        } 
 				// print numbered row
-				else if (witdthcount == 0)
+				else if (widthcount == 0)
 		        {
 		        	printable+=" "+ heightcount;
 		        }
 				//print item in the field
 				else 
-				printable +=" " + field[heightcount - 1][witdthcount - 1].toString();
+				printable +=" " + field[heightcount - 1][widthcount - 1].toString();
 		    }
 			printable+= "\n";
 		}
