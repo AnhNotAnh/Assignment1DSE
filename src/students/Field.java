@@ -37,7 +37,7 @@ public class Field
 					{
 						Random dice = new Random();
 						int percentage = dice.nextInt(101);
-						if (percentage <= 20)
+						if (percentage <= 5)
 							{
 								field[heightcount][widthcount] = new Weed();
 							}
