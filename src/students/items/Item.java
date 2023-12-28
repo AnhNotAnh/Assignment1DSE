@@ -41,9 +41,10 @@ public abstract class Item implements Cloneable
 	
 	public int getValue() 
 	{
+		// Return value when it passes maturationAge otherwise when harvesting it will return 0.
 		if(this instanceof Food)
 		{
-			if(age > maturationAge)
+			if(age >= maturationAge)
 				return monetaryValue;
 			else
 				return 0;
