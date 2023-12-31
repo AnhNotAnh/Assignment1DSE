@@ -8,6 +8,9 @@ public class Field
 	protected Item[][] field;
 	protected int height;
 	protected int width;
+	//Depend on level of difficulty, the chance of flood may occur differently?
+	protected Difficulty difficulty;
+	public enum Difficulty {easy, medium, hard};
 	
 	public Field(int height, int width)
 	{
@@ -37,7 +40,12 @@ public class Field
 					{
 						Random dice = new Random();
 						int percentage = dice.nextInt(101);
-						if (percentage <= 5)
+						int chance = 5;
+						if(difficulty == Difficulty.medium)
+							chance = 10;
+						else if(difficulty == Difficulty.hard)
+							chance = 20;
+						if (percentage <= chance)
 							{
 								field[heightcount][widthcount] = new Weed();
 							}
