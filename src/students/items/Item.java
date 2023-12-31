@@ -20,7 +20,7 @@ public abstract class Item implements Cloneable
 	
 	public void tick() 
 	{
-		 age ++;
+		age ++;
 	}
 	
 	

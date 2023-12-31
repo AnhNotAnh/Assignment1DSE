@@ -30,33 +30,47 @@ public class Field
 	{
 		/* Execute aging process of every item in the field,
 		 * 1/5 chance randomly grow weed pest if item is Soil,
-		 * and turn item to UntilledSoil if died after aging. */
-		for (int heightcount = 0; heightcount < height; heightcount++)
-		{
-			for (int widthcount = 0; widthcount < width; widthcount++)
-			{
-				field[heightcount][widthcount].tick();
-				if (field[heightcount][widthcount] instanceof Soil)
-					{
-						Random dice = new Random();
-						int percentage = dice.nextInt(101);
-						int chance = 5;
-						if(difficulty == Difficulty.medium)
-							chance = 10;
-						else if(difficulty == Difficulty.hard)
-							chance = 20;
-						if (percentage <= chance)
-							{
-								field[heightcount][widthcount] = new Weed();
-							}
-					}
-				if (field[heightcount][widthcount].died() == true)
-					{
-						field[heightcount][widthcount] = new UntilledSoil();
-					}
-				
+		 * and turn item to UntilledSoil if died after aging (hard). */
+		int chance = 5;
+		boolean flood = false;
+		if(difficulty == Difficulty.medium)
+			chance = 10;
+		else if(difficulty == Difficulty.hard)
+			chance = 15;
+		Random dice = new Random();
+		//If difficulty is hard, 30% chance of flood will occur and turn all item in the field to soil.
+		if (difficulty == Difficulty.hard && dice.nextInt(101) <= 30) {
+			for (int heightcount = 0; heightcount < height; heightcount++) {
+				for (int widthcount = 0; widthcount < width; widthcount++) {
+					field[heightcount][widthcount] = new Soil();
 				}
 			}
+			flood = true;
+		}
+		
+		if(flood == false) {
+			for (int heightcount = 0; heightcount < height; heightcount++)
+			{
+				for (int widthcount = 0; widthcount < width; widthcount++)
+				{
+					field[heightcount][widthcount].tick();
+					int percentage = dice.nextInt(101);
+					if (field[heightcount][widthcount] instanceof Soil)
+						{
+							if (percentage <= chance)
+								{
+									field[heightcount][widthcount] = new Weed();
+								}
+						}
+					if (field[heightcount][widthcount].died() == true)
+						{
+							field[heightcount][widthcount] = new UntilledSoil();
+						}
+					
+					}
+			}
+		}
+		
 	}
 		
 	public void till(int x, int y) 
