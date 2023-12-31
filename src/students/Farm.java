@@ -1,5 +1,6 @@
 package students;
 import java.util.Scanner;
+
 import students.items.*;
 
 public class Farm 
@@ -25,6 +26,32 @@ public class Farm
 		 * Unexpected input will result in skipping the turn of user, and prompting error message */
 		
 		Scanner keyboard = new Scanner(System.in);
+		System.out.println("Choose level of difficulty (easy, medium, hard):");
+		String level;
+		while(true)
+		{
+			level = keyboard.nextLine().trim().toLowerCase();
+			if (level.equals("easy"))
+			{
+				fieldObj.difficulty = Field.Difficulty.easy;
+				break;
+			}
+			else if (level.equals("medium"))
+			{
+				fieldObj.difficulty = Field.Difficulty.medium;
+				break;
+			}
+			else if (level.equals("hard"))
+			{
+				fieldObj.difficulty = Field.Difficulty.hard;
+				break;
+			}
+			else
+			{
+				System.out.println("Invalid input, please try again !"+"\n");
+			}
+		}
+
 		boolean quit = false;
 		while(!quit) 
 		{
@@ -143,5 +170,6 @@ public class Farm
 				System.out.println("Wrong format, please try again !"+"\n");
 			}
 		}
+		keyboard.close();
 	}
 }
