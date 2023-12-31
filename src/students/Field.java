@@ -36,10 +36,10 @@ public class Field
 		if(difficulty == Difficulty.medium)
 			chance = 10;
 		else if(difficulty == Difficulty.hard)
-			chance = 15;
+			chance = 20;
 		Random dice = new Random();
-		//If difficulty is hard, 30% chance of flood will occur and turn all item in the field to soil.
-		if (difficulty == Difficulty.hard && dice.nextInt(101) <= 30) {
+		//If difficulty is hard, 10% chance of flood will occur and turn all item in the field to soil.
+		if (difficulty == Difficulty.hard && dice.nextInt(101) <= 10) {
 			for (int heightcount = 0; heightcount < height; heightcount++) {
 				for (int widthcount = 0; widthcount < width; widthcount++) {
 					field[heightcount][widthcount] = new Soil();
